@@ -1,0 +1,5 @@
+#Tetra results
+	NC_002695.fasta	NC_004431.fasta	GCA_009720465.1_ASM972046v1_genomic.fna	
+NC_002695.fasta	*	0.99841	0.99874	
+NC_004431.fasta	0.99841	*	0.99913	
+GCA_009720465.1_ASM972046v1_genomic.fna	0.99874	0.99913	*	

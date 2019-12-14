@@ -1,0 +1,5 @@
+#ANIb and aligned percentage
+	NC_002695.fasta	NC_004431.fasta	GCA_009720465.1_ASM972046v1_genomic.fna	
+NC_002695.fasta	*	95.95 [74.49]	96.80 [78.38]	
+NC_004431.fasta	96.05 [76.91]	*	96.03 [76.71]	
+GCA_009720465.1_ASM972046v1_genomic.fna	97.40 [80.67]	96.32 [76.40]	*	
