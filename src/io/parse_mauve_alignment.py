@@ -24,15 +24,4 @@ def parse_mauve_output(alignment_path):
             else:
                 alignment_infos[2 + current][-1] += line
 
-    for i in range(0, len(alignment_infos)):
-        alignment_info = alignment_infos[i]
-        if i not in [3, 4]:
-            print(alignment_info)
-        else:
-            sumlen = 0
-            for alignment_i in alignment_info:
-                sumlen += len(alignment_i)
-            print('', len(alignment_info))
-            print('', '', sumlen)
-    print()
     return alignment_infos

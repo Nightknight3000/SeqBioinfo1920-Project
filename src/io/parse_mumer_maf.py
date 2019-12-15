@@ -15,4 +15,5 @@ def parse_mumer_output(alignment_path):
             else:
                 print("Error: This should not happen!")
                 return []
+
     return alignment_infos

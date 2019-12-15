@@ -10,7 +10,8 @@ __author__ = "Nantia Leonidou, Florian Riedl, Alexander Röhl"
 
 @click.command()
 @click.option("-i", "--input-paths", nargs=4, type=str,
-              default=("data/mauve/MSA1_Ref1/msa1.alignment", "data/mauve/MSA2_Ref2/msa2.alignment",
+              default=("data/mauve/WGA1_Ref1_revCompl/wga1_revCompl_ref1.alignment",
+                       "data/mauve/WGA2_Ref2_revCompl/wga2_revCompl_ref2.alignment",
                        "data/mumer/nc_002695/out.maf", "data/mumer/nc_004431/out.maf"), required=True)
 # @click.option("-of", "--output-fastapaths", nargs=4, type=str,
 #               default=("data/output/mauve_al1.fasta", "data/output/mauve_al2.fasta",
