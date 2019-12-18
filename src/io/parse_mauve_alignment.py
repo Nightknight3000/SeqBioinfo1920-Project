@@ -1,4 +1,7 @@
 def parse_mauve_output(alignment_path):
+    file_content = open(alignment_path, 'r').read()
+    print(file_content.count("> 1"))
+    print(file_content.count("> 2"))
     file_content = open(alignment_path, 'r').read().split('\n')
     alignment_infos = ["mauve", '', '', [], []]
     current = 0

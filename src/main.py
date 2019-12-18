@@ -4,7 +4,8 @@ import sys
 from src.io.parse_mauve_alignment import parse_mauve_output
 from src.io.parse_mumer_maf import parse_mumer_output
 from src.algorithm.count_stats import stat_counter
-from src.io.statistics_writer import write_stats
+from src.io.write_statistics import write_stats
+from src.io.write_fasta import write_collected_fasta
 
 __author__ = "Nantia Leonidou, Florian Riedl, Alexander Röhl"
 
@@ -17,11 +18,11 @@ __author__ = "Nantia Leonidou, Florian Riedl, Alexander Röhl"
 # @click.option("-of", "--output-fastapaths", nargs=4, type=str,
 #               default=("data/output/mauve_al1.fasta", "data/output/mauve_al2.fasta",
 #                        "data/output/mumer_al1.fasta", "data/output/mumer_al2.fasta"))
-@click.option("-of", "--collected-fastapaths", nargs=4, type=str, default="")
-def main(input_paths, collected_fastapaths):
+@click.option("-cf/-nf", "--collect-fastas/--dont-collect-fastas", default=False)
+def main(input_paths, collect_fastas):
     print("Running Project Tasks")
     print("Authors: ", __author__, '\n')
-    if check_commandline(input_paths, collected_fastapaths):
+    if check_commandline(input_paths, collect_fastas):
         sequence_infos = []
         for input_path in input_paths:
             if input_path.split('.')[-1] == "alignment":
@@ -40,16 +41,21 @@ def main(input_paths, collected_fastapaths):
         #             print('', len(alignment_info))
         #             print('', '', sumlen)
         #     print()
+        print("Compute counts for insertions, deletions, and mismatches.")
         counts = stat_counter(sequence_infos)
+        print("Write counts as csv-file.")
         write_stats(sequence_infos, counts)
+        if collect_fastas:
+            print("Write collected alignment sequences as fastas.")
+            write_collected_fasta(sequence_infos)
     print("Exit")
     sys.exit()
 
 
-def check_commandline(input_paths, collected_fastapaths):
+def check_commandline(input_paths, collect_fastas):
     if all([path.split('.')[-1] in ["alignment", "maf"] for path in input_paths]):
         print("All files of correct type.")
-        if not collected_fastapaths:
+        if not collect_fastas:
             print("No fasta files will be collected.")
             return True
         else:
