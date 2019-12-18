@@ -8,27 +8,36 @@ def stat_counter(sequence_infos):
             total_ins = 0
             total_dels = 0
             total_mism = 0
+            total_inv = 0
             total_len = 0
             for i in range(0, len(seqs_1)):
                 ins = 0
                 dels = 0
                 mism = 0
+                inv = []
                 xlen = len(seqs_1[i])
                 for j in range(0, len(seqs_1[i])):
                     c1 = seqs_1[i][j]
                     c2 = seqs_2[i][j]
+                    rc2 = seqs_2[i][len(seqs_2[i]) - 1 - j]
                     if c1 == '-':
                         ins += 1
                     elif c2 == '-':
                         dels += 1
                     elif c1 != c2:
                         mism += 1
+                    if c1 == rc2:
+                        inv.append(True)
+                    else:
+                        inv.append(False)
+                inv = all(inv)
                 total_ins += ins
                 total_dels += dels
                 total_mism += mism
+                total_inv += 1 if inv else 0
                 total_len += xlen
-                count.append([ins, dels, mism, xlen])
-            count.append([total_ins, total_dels, total_mism, total_len])
+                count.append([ins, dels, mism, inv, xlen])
+            count.append([total_ins, total_dels, total_mism, total_inv, total_len])
             counts.append(count)
         else:
             print("Number of blocks for sequence 1 and sequence 2 are not equal. Please check input, and revise code.")
