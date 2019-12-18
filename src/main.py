@@ -11,14 +11,17 @@ __author__ = "Nantia Leonidou, Florian Riedl, Alexander Röhl"
 
 
 @click.command()
-@click.option("-i", "--input-paths", nargs=4, type=str,
-              default=("data/mauve/WGA1_Ref1_revCompl/wga1_revCompl_ref1.alignment",
-                       "data/mauve/WGA2_Ref2_revCompl/wga2_revCompl_ref2.alignment",
-                       "data/MUMmer/NC_002695/out.maf", "data/MUMmer/NC_004431/out.maf"), required=True)
+@click.argument("input-paths", nargs=-1, type=str)
 @click.option("-cf/-nf", "--collect-fastas/--dont-collect-fastas", default=False)
 def main(input_paths, collect_fastas):
     print("Running Project Tasks")
     print("Authors: ", __author__, '\n')
+    if not input_paths:
+        input_paths = ("data/mauve/WGA1_Ref1_revCompl/wga1_revCompl_ref1.alignment",
+                       "data/mauve/WGA2_Ref2_revCompl/wga2_revCompl_ref2.alignment",
+                       "data/MUMmer/NC_002695/out.maf",
+                       "data/MUMmer/NC_004431/out.maf")
+
     if check_commandline(input_paths, collect_fastas):
         sequence_infos = []
         for input_path in input_paths:
@@ -26,24 +29,12 @@ def main(input_paths, collect_fastas):
                 sequence_infos.append(parse_mauve_output(input_path))
             else:
                 sequence_infos.append(parse_mumer_output(input_path))
-        # for alignment_infos in sequence_infos:
-        #     for i in range(0, len(alignment_infos)):
-        #         alignment_info = alignment_infos[i]
-        #         if i not in [3, 4]:
-        #             print(alignment_info)
-        #         else:
-        #             sumlen = 0
-        #             for alignment_i in alignment_info:
-        #                 sumlen += len(alignment_i)
-        #             print('', len(alignment_info))
-        #             print('', '', sumlen)
-        #     print()
         print("Compute counts for insertions, deletions, and mismatches.")
         counts = stat_counter(sequence_infos)
         print("Write counts as csv-file.")
         write_stats(sequence_infos, counts)
         if collect_fastas:
-            print("Write collected alignment sequences as fastas.")
+            print("Write collected alignment sequences as fasta-files.")
             write_collected_fasta(sequence_infos)
     print("Exit")
     sys.exit()

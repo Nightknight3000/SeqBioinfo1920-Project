@@ -40,6 +40,6 @@ def stat_counter(sequence_infos):
             count.append([total_ins, total_dels, total_mism, total_inv, total_len])
             counts.append(count)
         else:
-            print("Number of blocks for sequence 1 and sequence 2 are not equal. Please check input, and revise code.")
+            print('', "Number of blocks for sequence 1 and sequence 2 are not equal. Please check input, and revise code.")
             counts.append([])
     return counts
