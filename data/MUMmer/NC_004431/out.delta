@@ -1,4 +1,4 @@
-/home/flo/System_Bioinformatics/SequenceWS19-20_Assignments/Project/NC_004431/NC_004431.fasta /home/flo/System_Bioinformatics/SequenceWS19-20_Assignments/Project/NC_004431/../r_assembly.fna
+/home/flo/System_Bioinformatics/SequenceWS19-20_Assignments/SeqBioinfo1920-Project/data/MUMmer/NC_004431/NC_004431.fasta /home/flo/System_Bioinformatics/SequenceWS19-20_Assignments/SeqBioinfo1920-Project/data/MUMmer/r_assembly.fna
 NUCMER
 >NC_004431.1 CP041955.1 5231428 4856183
 1 309 791185 791493 0 0 0
@@ -8613,45 +8613,4 @@ NUCMER
 -1
 6337
 2076
-0
->NC_004431.1 CP041956.1 5231428 74945
-3441175 3441947 69934 69155 64 64 0
--168
--1
--1
--1
--1
--1
--1
--1
-267
-0
->NC_004431.1 CP041957.1 5231428 83648
-4283641 4284111 79293 79763 46 46 0
-0
->NC_004431.1 CP041959.1 5231428 84917
-3444051 3445657 43388 41769 79 79 0
--5
--4
--93
--1
--1054
--1
--1
--1
--1
--1
--1
--1
--394
-0
->NC_004431.1 CP041960.1 5231428 98151
-1401821 1402053 26354 26125 20 20 0
-26
-1
-1
-0
-1405247 1405421 25504 25330 18 18 0
-65
--3
 0

@@ -1,0 +1,12 @@
+nucmer 	ref = NC_002695
+	query= NC_004431
+
+nucmer ../NC_002695/NC_002695.fasta ../NC_004431/NC_004431.fasta
+nucmer --sam-short=out_short.sam ../NC_002695/NC_002695.fasta ../NC_004431/NC_004431.fasta
+nucmer --sam-long=out_long.sam ../NC_002695/NC_002695.fasta ../NC_004431/NC_004431.fasta
+
+delta2maf out.delta > out.maf
+
+mummerplot out.delta
+
+gnuplot-x11
