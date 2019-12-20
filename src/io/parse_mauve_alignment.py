@@ -6,9 +6,9 @@ def parse_mauve_output(alignment_path):
         line = file_content[i]
         infoline_indicators = ['#', '>', '=']
         if line.startswith("#Sequence1File"):
-            alignment_infos[1] = (line.split(' ')[-1])
+            alignment_infos[1] = line.split(' ')[-1].split('\\')[-1].split('.')[0]
         elif line.startswith("#Sequence2File"):
-            alignment_infos[2] = (line.split(' ')[-1])
+            alignment_infos[2] = line.split(' ')[-1].split('\\')[-1].split('.')[0]
 
         if line and line[0] not in infoline_indicators:
             if file_content[i - 1][0] in infoline_indicators:
@@ -23,5 +23,14 @@ def parse_mauve_output(alignment_path):
                     return []
             else:
                 alignment_infos[2 + current][-1] += line
+
+    # isolate aligned blocks
+    for i in range(0, len(alignment_infos[3])):
+        seqs_1 = alignment_infos[3][i]
+        seqs_2 = alignment_infos[4][i]
+        if len(seqs_1) != len(seqs_2):
+            alignment_infos[3] = alignment_infos[3][:i]
+            alignment_infos[4] = alignment_infos[4][:i]
+            break
 
     return alignment_infos

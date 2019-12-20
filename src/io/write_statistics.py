@@ -23,14 +23,14 @@ def write_stats(sequence_infos, counts):
                     line = ','.join([str(element) for element in line])
                     lines.append(line)
                     if count == current_alcount[-1]:
-                        lines.append('')
+                        lines.append(',,,,,,,,')
             else:
                 print('', '', "Error: No counts were defined for this file. Cannot write.")
 
         new_filepath = directory + "/statistics.csv"
         new_file = open(extend_new_filepath_by_copy_id(new_filepath, directory), 'w')
         new_file.write('\n'.join(lines))
-        print('', "CSV-file written")
+        print('', "Wrote csv-file from all supplied files")
         new_file.close()
     else:
         print('', "Error: This should not be possible (see write_statistics.py).")

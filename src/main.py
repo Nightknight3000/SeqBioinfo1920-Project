@@ -17,8 +17,8 @@ def main(input_paths, collect_fastas):
     print("Running Project Tasks")
     print("Authors: ", __author__, '\n')
     if not input_paths:
-        input_paths = ("data/mauve/WGA1_Ref1_revCompl/wga1_revCompl_ref1.alignment",
-                       "data/mauve/WGA2_Ref2_revCompl/wga2_revCompl_ref2.alignment",
+        input_paths = ("data/mauve/WGA_Ref1_Assembly/wga_ref1.alignment",
+                       "data/mauve/WGA_Ref2_Assembly/wga_ref2.alignment",
                        "data/MUMmer/NC_002695/out.maf",
                        "data/MUMmer/NC_004431/out.maf")
 
