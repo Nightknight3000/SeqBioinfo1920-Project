@@ -8,15 +8,20 @@ def write_stats(sequence_infos, counts):
     # clear director, before filling with new results
     for file in os.listdir(directory):
         os.remove(directory + '/' + file)
-    lines = ["Tool,Seq1,Seq2,Inputfile_ID,Insertions,Deletions,Mismatches,Is_Inverse,Total_Length"]
+    lines = ["Tool,Seq1,Seq2,Inputfile_ID,start_pos1,start_pos2,Insertions,Deletions,Mismatches,Is_Inverse,Seq2_Is_Translocated,Total_Length"]
 
     if len(sequence_infos) == len(counts):
         for i in range(0, len(sequence_infos)):
             current_alignment = sequence_infos[i]
             current_alcount = counts[i]
             if current_alcount:
-                for count in current_alcount:
+                for j in range(0, len(current_alcount)):
+                    count = current_alcount[j]
                     line = [current_alignment[0], current_alignment[1], current_alignment[2], i]
+                    if j != len(current_alcount) - 1:
+                        line.extend([current_alignment[5][j], current_alignment[6][j]])
+                    else:
+                        line.extend([current_alignment[5][0], current_alignment[6][0]])
                     line.extend(count)
                     if count == current_alcount[-1]:
                         line[0] += "_Total"

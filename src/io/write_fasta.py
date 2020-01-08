@@ -7,7 +7,9 @@ def write_collected_fasta(sequence_infos):
     directory = "data/output/fastas"
     # clear director, before filling with new results
     for file in os.listdir(directory):
-        os.remove(directory + '/' + file)
+        filepath = directory + '/' + file
+        if os.path.isfile(filepath):
+            os.remove(directory + '/' + file)
     fasta_lineskip = 60
 
     for seq_info in sequence_infos:
