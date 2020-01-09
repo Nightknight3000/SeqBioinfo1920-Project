@@ -6,6 +6,7 @@ from src.io.parse_mumer_maf import parse_mumer_output
 from src.algorithm.count_stats import stat_counter
 from src.io.write_statistics import write_stats
 from src.io.write_fasta import write_collected_fasta
+from src.io.write_circos_input import write_cyclic_alignment_table
 
 __author__ = "Nantia Leonidou, Florian Riedl, Alexander Röhl"
 
@@ -36,6 +37,8 @@ def main(input_paths, collect_fastas):
         if collect_fastas:
             print("Write collected alignment sequences as fasta-files.")
             write_collected_fasta(sequence_infos)
+        print("Write cyclic alignment table")
+        write_cyclic_alignment_table(sequence_infos)
     print("Exit")
     sys.exit()
 
