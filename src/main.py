@@ -13,7 +13,7 @@ __author__ = "Nantia Leonidou, Florian Riedl, Alexander Röhl"
 
 @click.command()
 @click.argument("input-paths", nargs=-1, type=str)
-@click.option("-cf/-nf", "--collect-fastas/--dont-collect-fastas", default=False)
+@click.option("-cf/-nf", "--collect-fastas/--not-collect-fastas", default=False, help="Use \'-cf\' to collect fasta files from alignments")
 def main(input_paths, collect_fastas):
     print("Running Project Tasks")
     print("Authors: ", __author__, '\n')
@@ -25,11 +25,13 @@ def main(input_paths, collect_fastas):
 
     if check_commandline(input_paths, collect_fastas):
         sequence_infos = []
+        print("Parse wga files.")
         for input_path in input_paths:
             if input_path.split('.')[-1] == "alignment":
                 sequence_infos.append(parse_mauve_output(input_path))
             else:
                 sequence_infos.append(parse_mumer_output(input_path))
+            print(f"\tParsed {sequence_infos[-1][0]}-file containing {len(sequence_infos[-1][3])} subalignments.")
         print("Compute counts for insertions, deletions, and mismatches.")
         counts = stat_counter(sequence_infos)
         print("Write counts as csv-file.")

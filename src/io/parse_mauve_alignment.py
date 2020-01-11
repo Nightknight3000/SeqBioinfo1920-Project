@@ -25,7 +25,7 @@ def parse_mauve_output(alignment_path):
                     alignment_infos[6].append(int(file_content[i - 1].split(':')[1].split('-')[0]))
                     current = 2
                 else:
-                    print("Error: This should not happen!")
+                    print("\tError: This should not happen!")
                     return []
             else:
                 alignment_infos[2 + current][-1] += line

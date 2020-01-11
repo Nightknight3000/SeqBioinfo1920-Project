@@ -22,5 +22,5 @@ def write_collected_fasta(sequence_infos):
             file_content = "> " + ''.join(seq[0].split('.')[:-1]) + '\n'
             file_content += '\n'.join([seq[1][i:i + fasta_lineskip] for i in range(0, len(seq[1]), fasta_lineskip)])
             fasta_file.write(file_content)
-            print('', "Wrote fasta-file from " + seq_info[0] + "-file data")
+            print("\tWrote fasta-file from " + seq_info[0] + "-file data")
             fasta_file.close()

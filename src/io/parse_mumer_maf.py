@@ -19,7 +19,7 @@ def parse_mumer_output(alignment_path):
                 alignment_infos[4].append(line.split(' ')[-1].upper())
                 alignment_infos[6].append(int(line.split(' ')[2]) + 1)
             else:
-                print("Error: This should not happen!")
+                print("\tError: This should not happen!")
                 return []
 
     return alignment_infos

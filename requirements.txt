@@ -1,2 +1,3 @@
-click
 biopython
+click
+pandas

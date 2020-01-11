@@ -1,7 +1,7 @@
 def stat_counter(sequence_infos):
     counts = []
     for alignment_infos in sequence_infos:
-        print('', "Start count of " + alignment_infos[0] + "-file")
+        print("\tStart count of " + alignment_infos[0] + "-file")
         count = []
         seqs_1 = alignment_infos[3]
         seqs_2 = alignment_infos[4]
@@ -57,12 +57,12 @@ def stat_counter(sequence_infos):
                     total_len += xlen
                     count.append([ins, dels, mism, inv, transloc, xlen])
                 else:
-                    print('', '', "Error: The contained sequences with ID = " + str(i + 1) +
+                    print("\t\tError: The contained sequences with ID = " + str(i + 1) +
                           " of " + str(len(seqs_1)) + ", though assumed to be aligned, do not have the same length.")
             count.append([total_ins, total_dels, total_mism, total_inv, total_translocs, total_len])
             counts.append(count)
         else:
-            print('', '', "Number of blocks for sequence 1 and sequence 2 are not equal."
+            print("\t\tNumber of blocks for sequence 1 and sequence 2 are not equal."
                           "Please check input, and revise code.")
             counts.append([])
     return counts

@@ -9,6 +9,7 @@ python 3.6
 Packages:
 * biopython
 * click
+* pandas
 
 ## Quick Setup for developers
 
@@ -27,19 +28,20 @@ Afterwards run the executable as seen in the next paragraph.
 
 ### The CLI - Command Line Interface
 ```
-> python ClustalW.py [-i <inputfilepath>] [-o <inputfilepath>] [-a <"dna"/"amino_acid">] [-g <int>] [-h/-s]
+> python start_project.py [INPUT_PATHS] [-cf/-nf]
 
--i, --input-filepath,   <arg> filepath to multiple-fasta-file for msa, default="data/supplement/BB11007_unaligned.fasta"
--o, --output-filepath,  <arg> filepath for outputfile in fasta format, default="data/output/BB11007_selfaligned.fasta"
--a, --alphabet,         <arg> either "dna" or "amino_acid" (is case sensitive) for respective alphabet, default="amino_acid"
--g, --gap-score,        <arg> positive value for gap-score, default="3"
--h/-s, --help/--silent        given -h or --help all usage options are displayed instead of a computation, default=False
+Arguments:
+    INPUT_PATHS,                                       <nargs> Path(s) for multiple/one wga inputfile, default=("data/mauve/WGA_Ref1_Assembly/wga_ref1.alignment", "data/mauve/WGA_Ref2_Assembly/wga_ref2.alignment", "data/MUMmer/NC_002695/out.maf", "data/MUMmer/NC_004431/out.maf")
+
+Options:
+    -cf/-nf, --collect-fastas/--not-collect-fastas,            Use '-cf' to collect fasta files from alignments, default=False
+    --help  ,                                                  Show help message
 ```
 
 ### Example
 The project can be run like this:
 ```
-python ClustalW.py -i C:/users/MaryDoe/documents/multiFasta.fasta -o C:/users/JohnDoe/documents/msa.fasta -a "dna" -g 5
+python start_project.py C:/users/MaryDoe/documents/mauve_wga.alignment C:/users/MaryDoe/documents/mumer_wga.maf -cf
 ```
 
 ## Authors
